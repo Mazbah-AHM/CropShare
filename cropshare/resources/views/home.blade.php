@@ -27,22 +27,17 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                 </ul>
-                @if (Auth::user())
-                    <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger" type="submit">Logout</button>
-                    </form>
-                @endif
+                <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Logout</button>
+                </form>
             </div>
         </div>
     </nav>
 
     <div class="container">
-        @if (Auth::user())
-            <h1> Welcome, {{ Auth::user()->name }}</h1>
-        @endif
-
+        <h1> Welcome, {{ Auth::user()->name }}</h1>
     </div>
 </body>
 
