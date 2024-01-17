@@ -45,7 +45,7 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            return redirect('/home')->with('success', 'Login Success');
+            return redirect('/')->with('success', 'Login Success');
         };
         return back()->with('error', 'Error Email or Password');
     }
@@ -65,5 +65,13 @@ class AuthController extends Controller
     public function resetPasswordPost(Request $request)
     {
         return back()->with('success', 'An email has been sent to your mailbox!');
+    }
+
+    public function getContact($id)
+    {
+        $contact = User::where("id", "=", $id)->get();
+        // dd($contact);
+
+        return view('contact', compact('contact'));
     }
 }
